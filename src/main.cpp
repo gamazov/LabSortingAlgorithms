@@ -1,32 +1,134 @@
-// 14
-// Массив данных с расписанием поездов:
-// Расписание содержит номер поезда, дата отправления, тип  поезда, (скорый,
-// пассажирский, товарный), время отправления,  время в пути (сравнение по полям
-// – дата отправления,  время отправления, номер поезда, время в пути (по
-// убыванию)) 14) 14, в, е, ж
-
-// а) Сортировка выбором
-// б) Сортировка пузырьком
-// в) Сортировка простыми вставками
-// г) Шейкер-сортировка
-// д) Пирамидальная сортировка
-// е) Быстрая сортировка
-// ж) Сортировка слиянием
+/*!
+\file
+\brief https://github.com/gamazov/LabSortingAlgorithms
+*/
 
 #include <fstream>
 #include <iostream>
 #include <vector>
 
+/*!
+\fn void parseStr(std::string input, std::vector<std::string> &output, char sym)
+\brief Находит в строке str элементы, разделенные символом sym, и записывает
+результат в output \param[in] input Строка в которой производится поиск
+\param[in,out] output Найденные подстроки
+\param[in] sym Символ по которому нужно делить строку
+*/
+
+/*!
+\fn void parseNo(Train &train)
+\brief Преобразовывает строку no в беззнаковое чило для сравнения
+\param[in,out] train Заполняемая структура
+*/
+
+/*!
+\fn void parseData(Train &train)
+\brief Преобразовывает строку data в беззнаковое чило для сравнения
+\param[in,out] train Заполняемая структура
+*/
+
+/*!
+\fn void parseTime(Train &train)
+\brief Преобразовывает строку time в беззнаковое чило для сравнения
+\param[in,out] train Заполняемая структура
+*/
+
+/*!
+\fn void parseOnRoad(Train &train)
+\brief Преобразовывает строку onRoad в беззнаковое чило для сравнения
+\param[in,out] train Заполняемая структура
+*/
+
+/*!
+\fn void parseFile(std::vector<Train> &schedules, char *fileName)
+\brief Заполняетс все записи расписания, считывая данные из передаваемого файла
+\param[in,out] schedules Заполняемое расписание
+\param[in] fileName Файл в котором происходит поиск
+*/
+
+/*!
+\fn void printSchedules(std::vector<Train> &schedules)
+\brief Выводит все расписание
+\param[in] schedules Расписание
+*/
+
+/*!
+\fn void insertSort(std::vector<Train> &schedules)
+\brief Сортировка вставками
+\param[in,out] schedules Сортируемое расписание
+*/
+
+/*!
+\fn int splittingByElem(std::vector<Train> &schedules, int start, int elemPos)
+\brief Функция разделения
+\param[in,out] schedules Сортируемое расписание
+\param[in] start Начало сортируемого массива
+\param[in] elemPos Найденный элемент
+\return Возвращает индекс опорного элемента
+*/
+
+/*!
+\fn void quickSort(std::vector<Train> &schedules, int start, int end)
+\brief Быстрая сортировка
+\param[in,out] schedules Сортируемое расписание
+\param[in] start Начало сортируемого массива
+\param[in] end Конец сортируемого массива
+*/
+
+/*!
+\fn void merge(std::vector<Train> &schedules, int start, int end, int mid)
+\brief Объединение массивов
+\param[in,out] schedules Сортируемое расписание
+\param[in] start Начало сортируемого массива
+\param[in] end Конец сортируемого массива
+\param[in] mid Середина сортируемого массива
+*/
+
+/*!
+\fn void mergeSort(std::vector<Train> &schedules, int start, int end)
+\brief Сортировка слиянием
+\param[in,out] schedules Сортируемое расписание
+\param[in] start Начало сортируемого массива
+\param[in] end Конец сортируемого массива
+*/
+
+/*!
+\fn bool comp(Train &first, Train &second)
+\brief Компоратор для стандартной сортировки C++ std::sort()
+\param[in] first Левый сравниваемый
+\param[in] second Правый сравниваемый
+\return Возвращает true - правый меньше левого, false - в противном случае
+*/
+
+/*!
+\fn void printInfo(std::vector<Train> &schedules, std::string fileName)
+\brief Сортирует, отображая затраченное время, и записывая отсортированное
+расписание \param[in] schedules Сортируемое расписание \param[in] fileName Тип
+сортировки и куда записывать
+*/
+
+/*!
+\brief Описывает запись расписаня поездов
+*/
 struct Train {
+  //! Дата отправления
   std::string data;
+  //! Время отрпавления
   std::string time;
+  //! Номер поезда
   std::string no;
+  //! Время в пути
   std::string onRoad;
+  //! Тип поезда
   std::string type;
 
+  //! Дата, представленная в виде беззнакового числа для сравлнения
   unsigned int dataVal = 0;
+  //! Время отправления, представленное в виде беззнакового числа для сравлнения
   unsigned int timeVal = 0;
+  //! Номер, представленный в виде беззнакового числа для сравлнения
   unsigned int noVal = 0;
+  //! Время в пути,  представленное в виде беззнакового числа для сравлнения
   unsigned int onRoadVal = 0;
 };
 
@@ -78,7 +180,6 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-// в) Сортировка простыми вставками
 void insertSort(std::vector<Train> &schedules) {
   Train tmp = {};
   int i, j, n = static_cast<int>(schedules.size());
@@ -91,7 +192,6 @@ void insertSort(std::vector<Train> &schedules) {
   }
 }
 
-// е) Быстрая сортировка
 int splittingByElem(std::vector<Train> &schedules, int start, int elemPos) {
   int i = start;
   while (i < elemPos) {
@@ -119,7 +219,6 @@ void quickSort(std::vector<Train> &schedules, int start, int end) {
   }
 }
 
-// ж) Сортировка слиянием
 void merge(std::vector<Train> &schedules, int start, int end, int mid) {
   Train *tmp = new Train[end - start + 1];
   int i = start, j = mid + 1, k = 0;
@@ -253,7 +352,7 @@ void printInfo(std::vector<Train> &schedules, std::string fileName) {
   }
   fout.close();
 
-  unsigned int searchTime = endTime - startTime;
+  unsigned int searchTime = (endTime - startTime) / CLOCKS_PER_SEC;
   std::cout << "Время выполнения " << fileName << " для " << schedules.size()
             << ": " << searchTime << std::endl;
 }
@@ -276,7 +375,8 @@ bool operator>(Train &f, Train &s) {
   if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal > s.noVal) {
     return true;
   }
-  if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal == s.noVal && f.onRoadVal > s.onRoadVal) {
+  if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal == s.noVal &&
+      f.onRoadVal > s.onRoadVal) {
     return true;
   }
   return false;
@@ -292,7 +392,8 @@ bool operator<(Train &f, Train &s) {
   if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal < s.noVal) {
     return true;
   }
-  if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal == s.noVal && f.onRoadVal < s.onRoadVal) {
+  if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal == s.noVal &&
+      f.onRoadVal < s.onRoadVal) {
     return true;
   }
   return false;
