@@ -1,6 +1,7 @@
 /*!
 \file
 \brief https://github.com/gamazov/LabSortingAlgorithms
+\author Mazov Grigiriy
 */
 
 #include <fstream>
@@ -9,126 +10,126 @@
 
 /*!
 \fn void parseStr(std::string input, std::vector<std::string> &output, char sym)
-\brief Находит в строке str элементы, разделенные символом sym, и записывает
-результат в output \param[in] input Строка в которой производится поиск
-\param[in,out] output Найденные подстроки
-\param[in] sym Символ по которому нужно делить строку
+\brief Finds elements separated by the sym symbol in the string str and writes the result to output
+\param[in] input The string in which the search is performed
+\param[in,out] output Found substrings
+\param[in] sym The character by which to divide the string
 */
 
 /*!
 \fn void parseNo(Train &train)
-\brief Преобразовывает строку no в беззнаковое чило для сравнения
-\param[in,out] train Заполняемая структура
+\brief Converts the string no to an unsigned number for comparison
+\param[in,out] train Structure to be filled in
 */
 
 /*!
 \fn void parseData(Train &train)
-\brief Преобразовывает строку data в беззнаковое чило для сравнения
-\param[in,out] train Заполняемая структура
+\brief Converts the data string to an unsigned number for comparison
+\param[in,out] train Structure to be filled in
 */
 
 /*!
 \fn void parseTime(Train &train)
-\brief Преобразовывает строку time в беззнаковое чило для сравнения
-\param[in,out] train Заполняемая структура
+\brief Converts the string time to an unsigned number for comparison
+\param[in,out] train Structure to be filled in
 */
 
 /*!
 \fn void parseOnRoad(Train &train)
-\brief Преобразовывает строку onRoad в беззнаковое чило для сравнения
-\param[in,out] train Заполняемая структура
+\brief Converts the string on Road to an unsigned number for comparison
+\param[in,out] train Structure to be filled in
 */
 
 /*!
 \fn void parseFile(std::vector<Train> &schedules, char *fileName)
-\brief Заполняетс все записи расписания, считывая данные из передаваемого файла
-\param[in,out] schedules Заполняемое расписание
-\param[in] fileName Файл в котором происходит поиск
+\brief All schedule entries are filled in by reading data from the transmitted file
+\param[in,out] schedules Schedule to be filled in
+\param[in] fileName The file in which the search takes place
 */
 
 /*!
 \fn void printSchedules(std::vector<Train> &schedules)
-\brief Выводит все расписание
-\param[in] schedules Расписание
+\brief Displays the entire schedule
+\param[in] schedules Schedule
 */
 
 /*!
 \fn void insertSort(std::vector<Train> &schedules)
-\brief Сортировка вставками
-\param[in,out] schedules Сортируемое расписание
+\brief Insert sort
+\param[in,out] schedules Sortable schedule
 */
 
 /*!
 \fn int splittingByElem(std::vector<Train> &schedules, int start, int elemPos)
-\brief Функция разделения
-\param[in,out] schedules Сортируемое расписание
-\param[in] start Начало сортируемого массива
-\param[in] elemPos Найденный элемент
-\return Возвращает индекс опорного элемента
+\brief Separation function
+\param[in,out] schedules Sortable schedule
+\param[in] start The beginning of the sorted array
+\param[in] elemPos Found element
+\return Returns the index of the reference element
 */
 
 /*!
 \fn void quickSort(std::vector<Train> &schedules, int start, int end)
-\brief Быстрая сортировка
-\param[in,out] schedules Сортируемое расписание
-\param[in] start Начало сортируемого массива
-\param[in] end Конец сортируемого массива
+\brief Quick sort
+\param[in,out] schedules Sortable schedule
+\param[in] start The beginning of the sorted array
+\param[in] end End of the sorted array
 */
 
 /*!
 \fn void merge(std::vector<Train> &schedules, int start, int end, int mid)
-\brief Объединение массивов
-\param[in,out] schedules Сортируемое расписание
-\param[in] start Начало сортируемого массива
-\param[in] end Конец сортируемого массива
-\param[in] mid Середина сортируемого массива
+\brief Combining arrays
+\param[in,out] schedules Sortable schedule
+\param[in] start The beginning of the sorted array
+\param[in] end End of the sorted array
+\param[in] mid The middle of the sorted array
 */
 
 /*!
 \fn void mergeSort(std::vector<Train> &schedules, int start, int end)
-\brief Сортировка слиянием
-\param[in,out] schedules Сортируемое расписание
-\param[in] start Начало сортируемого массива
-\param[in] end Конец сортируемого массива
+\brief Merge sort(
+\param[in,out] schedules Sortable schedule
+\param[in] start The beginning of the sorted array
+\param[in] end End of the sorted array
 */
 
 /*!
 \fn bool comp(Train &first, Train &second)
-\brief Компоратор для стандартной сортировки C++ std::sort()
-\param[in] first Левый сравниваемый
-\param[in] second Правый сравниваемый
-\return Возвращает true - правый меньше левого, false - в противном случае
+\brief Comparator for std::sort()
+\param[in] first Left compared
+\param[in] second Right compared
+\return Returns true - the right is smaller than the left, false - otherwise
 */
 
 /*!
 \fn void printInfo(std::vector<Train> &schedules, std::string fileName)
-\brief Сортирует, отображая затраченное время, и записывая отсортированное
-расписание \param[in] schedules Сортируемое расписание \param[in] fileName Тип
-сортировки и куда записывать
+\brief Sorts by displaying the time spent and recording the sorted schedule
+\param[in] schedules Sortable schedule
+\param[in] fileName Type of sorting and where to write
 */
 
 /*!
-\brief Описывает запись расписаня поездов
+\brief Describes the recording of the train schedule
 */
 struct Train {
-  //! Дата отправления
+  //! Departure date
   std::string data;
-  //! Время отрпавления
+  //! Departure time
   std::string time;
-  //! Номер поезда
+  //! Train number
   std::string no;
-  //! Время в пути
+  //! Travel time
   std::string onRoad;
-  //! Тип поезда
+  //! Type of train
   std::string type;
 
-  //! Дата, представленная в виде беззнакового числа для сравлнения
+  //! Date represented as an unsigned number for comparison
   unsigned int dataVal = 0;
-  //! Время отправления, представленное в виде беззнакового числа для сравлнения
+  //! Departure time, represented as an unsigned number for comparison
   unsigned int timeVal = 0;
-  //! Номер, представленный в виде беззнакового числа для сравлнения
+  //! A number represented as an unsigned number for comparison
   unsigned int noVal = 0;
-  //! Время в пути,  представленное в виде беззнакового числа для сравлнения
+  //! Travel time, represented as an unsigned number for comparison
   unsigned int onRoadVal = 0;
 };
 
@@ -346,14 +347,14 @@ void printInfo(std::vector<Train> &schedules, std::string fileName) {
 
   std::ofstream fout(fileName);
   for (size_t i = 0; i < schedules.size(); i++) {
-    fout << i << ": " << schedules[i].no << " " << schedules[i].data << " "
-         << schedules[i].type << " " << schedules[i].time << " "
-         << schedules[i].onRoad << std::endl;
+    fout << i << ": " << schedules[i].no << " " << schedules[i].data
+      << " " << schedules[i].type << " " << schedules[i].time
+      << " " << schedules[i].onRoad << std::endl;
   }
   fout.close();
 
-  unsigned int searchTime = (endTime - startTime) / CLOCKS_PER_SEC;
-  std::cout << "Время выполнения " << fileName << " для " << schedules.size()
+  unsigned int searchTime = 1000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
+  std::cout << "Execution time " << fileName << " for " << schedules.size()
             << ": " << searchTime << std::endl;
 }
 
@@ -375,8 +376,7 @@ bool operator>(Train &f, Train &s) {
   if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal > s.noVal) {
     return true;
   }
-  if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal == s.noVal &&
-      f.onRoadVal > s.onRoadVal) {
+  if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal == s.noVal && f.onRoadVal > s.onRoadVal) {
     return true;
   }
   return false;
@@ -392,8 +392,7 @@ bool operator<(Train &f, Train &s) {
   if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal < s.noVal) {
     return true;
   }
-  if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal == s.noVal &&
-      f.onRoadVal < s.onRoadVal) {
+  if (f.dataVal == s.dataVal && f.timeVal == s.timeVal && f.noVal == s.noVal && f.onRoadVal < s.onRoadVal) {
     return true;
   }
   return false;
@@ -422,8 +421,8 @@ bool operator<=(Train &f, Train &s) {
 void printSchedules(std::vector<Train> &schedules) {
   std::cout << std::endl;
   for (size_t i = 0; i < schedules.size(); i++) {
-    std::cout << i << ": " << schedules[i].no << " " << schedules[i].data << " "
-              << schedules[i].type << " " << schedules[i].time << " "
-              << schedules[i].onRoad << std::endl;
+    std::cout << i << ": " << schedules[i].no << " " << schedules[i].data
+      << " " << schedules[i].type << " " << schedules[i].time
+      << " " << schedules[i].onRoad << std::endl;
   }
 }
