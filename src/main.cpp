@@ -342,14 +342,14 @@ void printInfo(std::vector<Train> &schedules, std::string fileName) {
 
   std::ofstream fout(fileName);
   for (size_t i = 0; i < schedules.size(); i++) {
-    fout << i << ": " << schedules[i].no << " " << schedules[i].data
+    fout << schedules[i].no << " " << schedules[i].data
       << " " << schedules[i].type << " " << schedules[i].time
       << " " << schedules[i].onRoad << std::endl;
   }
   fout.close();
 
   unsigned int searchTime = 1000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
-  std::cout << "Execution time " << fileName << " for " << schedules.size()
+  std::cout << "Execution time for " << schedules.size()
             << ": " << searchTime << std::endl;
 }
 
