@@ -149,25 +149,20 @@ bool operator<=(Train &f, Train &s);
 void printSchedules(std::vector<Train> &schedules);
 void printInfo(std::vector<Train> &schedules, std::string fileName);
 
-void bubbleSort(std::vector<Train> &schedules);
 void insertSort(std::vector<Train> &schedules);
 int splittingByElem(std::vector<Train> &schedules, int start, int elemPos);
 void quickSort(std::vector<Train> &schedules, int start, int end);
 void merge(std::vector<Train> &schedules, int start, int end, int mid);
 void mergeSort(std::vector<Train> &schedules, int start, int end);
 
-bool comp(Train &first, Train &second) { return first < second; }
-
 int main(int argc, char *argv[]) {
   if (argc == 1) {
     std::cout << "No parametrs";
+    return 1;
   }
-  std::vector<Train> schedules, copy;
+  std::vector<Train> schedules;
   parseFile(schedules, argv[1]);
 
-#ifdef SORT
-  printInfo(schedules, "sort.txt");
-#endif // SORT
 #ifdef INSERTSORT
   printInfo(schedules, "insertSort.txt");
 #endif // INSERTSORT

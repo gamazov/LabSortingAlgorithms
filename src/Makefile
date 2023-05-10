@@ -29,7 +29,5 @@ quicksort:
 	g++ -std=c++11 -Wall -Werror -Wextra main.cpp -D QUICKSORT
 insertsort:
 	g++ -std=c++11 -Wall -Werror -Wextra main.cpp -D INSERTSORT
-sort:
-	g++ -std=c++11 -Wall -Werror -Wextra main.cpp -D SORT
 clean:
 	rm -f insertSort.txt mergeSort.txt quickSort.txt sort.txt a.out
